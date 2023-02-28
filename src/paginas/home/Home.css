@@ -1,0 +1,22 @@
+.titulo{          /* modificar o titulo*/
+    color: blue;
+    text-align: center;
+
+}
+.img{             /* imagem */
+    width: 500px;
+    height: 200px;
+    display: block;
+    margin: 10px;
+}
+.texto{        /*texto*/
+    color: rgb(72, 152, 84);
+    text-align: center;
+    padding: 10px;
+    font-weight: 300;
+}
+    .txt{
+        display: flex;
+        font-size: 15px;
+        
+    }
