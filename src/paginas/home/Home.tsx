@@ -1,24 +1,30 @@
-import React  from "react";
+import React from 'react';
+import {Typography, Grid, Button} from '@material-ui/core';
+import {Box} from '@mui/material';
 import './Home.css';
-import imagem from '../../assets/logotipo-do-github.png'
 
-function Home(){
-    return( 
-        <div>
-        <h1 className="titulo" >Home</h1>
-        
-        <div className="txt">
-
-        <p className="texto">
-
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-</p>
-            
-        
-        <img src='https://img.freepik.com/fotos-premium/codigo-de-programacao-resumo-da-tela-do-desenvolvedor-de-software-desenvolvimento-de-codigo-de-computador_43284-65.jpg' alt="foto" className="img"/>
-        </div>
-        </div>
+function Home() {
+    return (
+        <>
+            <Grid container direction="row" justifyContent="center" alignItems="center" style={{ backgroundColor: "#3F51B5" }}>
+                <Grid alignItems="center" item xs={6}>
+                    <Box paddingX={20} >
+                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" style={{ color: "white", fontWeight: "bold" }}>Seja bem vindo(a)!</Typography>
+                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" style={{ color: "white", fontWeight: "bold" }}>expresse aqui os seus pensamentos e opiniões!</Typography>
+                    </Box>
+                    <Box display="flex" justifyContent="center">
+                        <Box marginRight={1}>
+                        </Box>
+                        <Button variant="outlined" style={{ borderColor: "white", backgroundColor: "#3F51B5", color: "white" }}>Ver Postagens</Button>
+                    </Box>
+                </Grid>
+                <Grid item xs={6} >
+                    <img src="https://neilpatel.com/wp-content/uploads/2017/07/corporatepersonalblog.jpg" alt="" width="400px" height="200px" />
+                </Grid>
+                <Grid xs={12} style={{ backgroundColor: "white" }}>
+                </Grid>
+            </Grid>
+        </>
     );
 }
 
