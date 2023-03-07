@@ -20,7 +20,7 @@ function Home() {
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
-                    <img src="https://i.imgur.com/H88yIo2.png" alt="" width="500px" height="500px" />
+                    <img src="https://matriculas.estacio.br/blog/wp-content/uploads/2019/01/rotina-de-estudos-faculdade-estrategias-para-acertar-estacio.jpg" alt="" width="500px" height="500px" />
                 </Grid>
                 <Grid xs={12} style={{ backgroundColor: "white" }}>
                 </Grid>

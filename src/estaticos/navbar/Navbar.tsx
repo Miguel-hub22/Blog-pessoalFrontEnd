@@ -16,7 +16,7 @@ function Navbar() {
                     <Box margin={2}  display="flex" justifyContent="start">
                         <Box mx={1} style={{ cursor: "pointer" }}>
                             <Link className='link' to='/home'>
-                            <Typography variant="h6" color="inherit">
+                            <Typography className='curso' variant="h6" color="inherit">
                                 Home
                             </Typography>
                             </Link>
@@ -38,7 +38,7 @@ function Navbar() {
                         </Box>
                         <Box mx={1} style={{ cursor: "pointer" }}>
                             <Link className='link' to='/login'>
-                            <Typography variant="h6" color="inherit">
+                            <Typography className='curso' variant="h6" color="inherit">
                                 Login
                             </Typography>
                             </Link>

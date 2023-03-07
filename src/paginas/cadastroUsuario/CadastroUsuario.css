@@ -1,0 +1,17 @@
+imagem2{
+    
+    background-repeat: no-repeat;
+    width: 100vh;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.textos2{
+    font-weight: bold !important;
+}
+
+.botoes{
+    margin-right: 30px !important;
+
+}
