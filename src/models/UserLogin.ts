@@ -3,6 +3,6 @@ interface Userlogin{
     usuario: string;
     senha: string;
     foto: string;
-    tokem?: string| null
+    token?: string | null
 }
 export default Userlogin;

@@ -14,17 +14,19 @@ function CadastroUsuario() {
     const [user, setUser] = useState<User>(
         {
         id: 0,
+        nome: '',
         usuario:'',
         senha:'',
-        foto:'',
+        fotos:'',
         })
 
     const [userResult, setUserResult] = useState<User>(
         {
             id: 0,
+            nome:'',
             usuario:'',
             senha:'',
-            foto:'',
+            fotos:'',
         })
 
     useEffect(() => {
@@ -48,20 +50,17 @@ function CadastroUsuario() {
 
     }
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
-        try{
-            if(confirmarSenha == user.senha && confirmarSenha !='') {
-            await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
+        
+            e.preventDefault()
+            if(confirmarSenha == user.senha ) {
+            cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
             alert('Usuario cadastrado com sucesso')
 
             }else{
                 alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
             }
-        }catch{
-            alert('Dados incoplento')
-
-        }
-        }
+    }
+        
     
     return (
         <Grid container direction='row-reverse'  justifyContent='center' alignItems='center'>
@@ -71,6 +70,7 @@ function CadastroUsuario() {
                     <form onSubmit={onSubmit}>
                         <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos2'>Cadastrar</Typography>
                         
+                        <TextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal'fullWidth />
                         <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal'fullWidth />
                         <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}  id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
                         <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)}id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth />
@@ -80,6 +80,7 @@ function CadastroUsuario() {
                                     Cancelar
                                 </Button>
                             </Link>
+                            
                             <Button type='submit' variant='contained' color='primary'>
                                     Cadastrar
                             </Button>
