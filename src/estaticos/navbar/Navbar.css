@@ -1,7 +1,15 @@
-.link{
-    cursor: pointer;
-    color: white;
+
+.barra{
+    background-color: blue !important;
+
 }
 .text-decorator-none{
     text-decoration: none;
+}
+.estilo{
+    background-color: black !important;
+}
+.cursor{
+    color: white;
+    
 }

@@ -8,19 +8,30 @@ import Postagem from '../../../models/Postagem';
 import { busca, buscaId, post, put } from '../../../services/Service';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 function CadastroPost() {
 
     let navigate = useNavigate();
     const { id } = useParams<{ id: string }>(); // temas armazedos 
-    const [temas, setTemas] = useState<Tema[]>([]) // temas cadastrados na PI
+    const [temas, setTemas] = useState<Tema[]>([])// temas cadastrados na PI
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens
     )
 
     useEffect(() => { // logado ou não
         if (token == "") {
-            alert("Você precisa estar logado")
+            toast.error("Voce pecisa estar logado!",{
+                position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                })
+
             navigate("/login")
 
         }
@@ -83,19 +94,37 @@ function CadastroPost() {
         e.preventDefault()
 
         if (id !== undefined) {
-            put(`/postagens`, postagem, setPostagem, { // postagem cadastrada(atualiza a postagem existente)
+           await put(`/postagens`, postagem, setPostagem, { // postagem cadastrada(atualiza a postagem existente)
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Postagem atualizada com sucesso');
+            toast.success("Postagem atualizada com sucesso!",{
+            position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
         } else {
-            post(`/postagens`, postagem, setPostagem, { // cadastrar um postagem nova (se não tiver)
+           await post(`/postagens`, postagem, setPostagem, { // cadastrar um postagem nova (se não tiver)
                 headers: {
                     'Authorization': token
                 }
             })
-            alert('Postagem cadastrada com sucesso');
+            toast.success("Postagem cadastrada com sucesso!",{
+                position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                })
         }
         back()
 // rota de postagens 
@@ -106,7 +135,7 @@ function CadastroPost() {
     }
     return (
         <Container maxWidth="sm" className="topo">
-            <form >
+            <form onSubmit={onSubmit}>
                 <Typography variant="h3" color="textSecondary" component="h1" align="center" >Formulário de cadastro postagem</Typography>
                 <TextField value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="titulo" label="titulo" variant="outlined" name="titulo" margin="normal" fullWidth />
                 <TextField value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedPostagem(e)} id="texto" label="texto" name="texto" variant="outlined" margin="normal" fullWidth />

@@ -9,6 +9,7 @@ import { login } from '../../services/Service';
 import { useDispatch } from 'react-redux';
 import { addToken } from '../../store/tokens/actions';
 import UserLogin from '../../models/UserLogin';
+import { toast } from 'react-toastify';
 
 
 
@@ -37,9 +38,31 @@ function updatedModel(e: ChangeEvent<HTMLInputElement>) {
         e.preventDefault();
         try{
             await login(`/usuarios/logar`, userLogin, setToken)
-            alert('Usuário logado com sucesso!');
+            
+            toast.success("Usuário logado com sucesso",{
+                position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                })
+            
         }catch(error) {
-            alert('Dados do usuário inconsistentes. Erro ao logar!');
+            
+            toast.error("Dados do usuário inconsistentes. Erro ao logar!",{
+                position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                })
+            
         }
     }
     useEffect(()=>{

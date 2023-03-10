@@ -5,9 +5,11 @@ import {Link, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../store/tokens/tokensReducer';
 import { addToken } from '../../store/tokens/actions';
+import './Navbar.css'
+import { toast } from 'react-toastify';
 
 
-function Navbar() {
+function Navbar(): JSX.Element {
     const token = useSelector<TokenState, TokenState["tokens"]>(
         (state) => state.tokens)
         let history = useNavigate();
@@ -15,8 +17,18 @@ function Navbar() {
 
     function goLogout(){
         
-        alert("Usuário deslogado")
         dispatch(addToken(''));
+        
+        toast.error("Usuário deslogado",{
+            position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
         history('/login')
     }
     var navBarComponent;
@@ -24,60 +36,53 @@ function Navbar() {
         if(token !='')
 
         navBarComponent = <AppBar position="static">
-        <Toolbar variant="dense">
-            <Box style={{ cursor: "pointer" }} >
-                <Typography variant="h6" color="inherit">
+        <Toolbar variant="dense" className='estilo'>
+            <Box className='cursor'>
+                <Typography variant="h5" color="inherit">
                     Blog Pessoal
                 </Typography>
             </Box>
 
-                <Box  mx={1} style={{ cursor: "pointer" }}>
-                <Link to="/home" >
-                    <Box margin={1}  display="flex" justifyContent="start">
-                    <Link className='link' to='/home'>
-                    <Typography className='curso' variant="h6" color="inherit">
-                        Home
-                    </Typography>
-                    </Link>
+            <Box display="flex" justifyContent="start">
+                <Link to="/home" className="text-decorator-none">
+                    <Box mx={1} className='cursor'>
+                        <Typography variant="h6" color="inherit">
+                            Home
+                        </Typography>
                     </Box>
-                    </Link>
-
-                    <Link to="/posts">
-                <Box mx={1} style={{ cursor: "pointer" }}>
-                    <Typography variant="h6" color="inherit">
-                        Postagens
-                    </Typography>
-                </Box>
                 </Link>
-
-                <Link to="/temas">
-                <Box mx={1} style={{ cursor: "pointer" }}>
+                <Link to="/posts" className="text-decorator-none">
+                    <Box mx={1} className='cursor'>
+                        <Typography variant="h6" color="inherit">
+                            Postagens
+                        </Typography>
+                    </Box>
+                </Link>
+                <Link to="/temas" className="text-decorator-none">
+                <Box mx={1} className='cursor'>
                     <Typography variant="h6" color="inherit">
                         Temas
                     </Typography>
                 </Box>
                 </Link>
-
-                <Link to="/formularioTema" >
-                <Box mx={1} style={{ cursor: "pointer" }}>
+                <Link to="/formularioTema" className="text-decorator-none">
+                <Box mx={1} className='cursor'>
                     <Typography variant="h6" color="inherit">
-                        Cadastrar Tema
+                        Cadastrar tema
                     </Typography>
                 </Box>
                 </Link>
-                <Box mx={1} style={{ cursor: "pointer" }}>
-                    <Link className='link' to='/login'>
-                    <Typography className='curso' variant="h6" color="inherit">
-                        Login
-                    </Typography>
-                    </Link>
-                    
-                </Box>
-                
+
+                    <Box mx={1} className='cursor' marginLeft={2} onClick={goLogout}>
+                        <Typography variant="h6" color="inherit">
+                            Login
+                        </Typography>
+                    </Box>
+
             </Box>
 
         </Toolbar>
-    </AppBar>
+     </AppBar>
 
     return (
         <> 

@@ -16,6 +16,8 @@ import DeletarTema from './conponets/temas/deletarTema/DeletarTema';
 import CadastroPost from './conponets/postagens/cadastroPost/CadastroPost';
 import store from './store/tokens/store';
 import { Provider } from 'react-redux';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -24,6 +26,7 @@ import { Provider } from 'react-redux';
 function App() {
   return(
     <Provider store={store}>
+      <ToastContainer/>
     <Router>
         <Navbar/>
             <div style={{ minHeight: '100vh' }}>

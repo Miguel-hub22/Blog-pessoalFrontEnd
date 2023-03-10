@@ -7,6 +7,8 @@ import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { busca } from '../../../services/Service';
 import Postagem from '../../../models/Postagem';
+import { toast } from 'react-toastify';
+
 
 function ListaPostagem() {
   let navigate = useNavigate();
@@ -16,7 +18,16 @@ function ListaPostagem() {
 )
   useEffect(() => {
     if (token == "") {
-      alert("Você precisa estar logado")
+      toast.error("Voce precisa estar logado!",{
+        position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        })
       navigate("/login")
 
     }
@@ -38,6 +49,7 @@ function ListaPostagem() {
 
   return (
     <>
+    {posts.map(post => (
       <Box m={2} >
         <Card variant="outlined">
           <CardContent>
@@ -45,26 +57,31 @@ function ListaPostagem() {
               Postagens
             </Typography>
             <Typography variant="h5" component="h2">
-              Título
+              {post.titulo}
             </Typography>
             <Typography variant="body2" component="p">
-              Texto da Postagem
+            {post.texto}
             </Typography>
             <Typography variant="body2" component="p">
-              Tema
+            Postado em:{' '}
+                {new Intl.DateTimeFormat(undefined, {
+                  dateStyle: 'full',
+                  timeStyle: 'medium',
+                }).format(new Date(post.data))}
+            Tema: {post.tema?.descricao}
             </Typography>
           </CardContent>
           <CardActions>
             <Box display="flex" justifyContent="center" mb={1.5}>
 
-              <Link to="" className="text-decorator-none" >
+            <Link to={`/formularioPostagem/${post.id}`} className="text-decorator-none" >
                 <Box mx={1}>
                   <Button variant="contained" className="marginLeft" size='small' color="primary" >
                     atualizar
                   </Button>
                 </Box>
               </Link>
-              <Link to="" className="text-decorator-none">
+              <Link to={`/deletarPostagem/${post.id}`} className="text-decorator-none">
                 <Box mx={1}>
                   <Button variant="contained" size='small' color="secondary">
                     deletar
@@ -75,7 +92,9 @@ function ListaPostagem() {
           </CardActions>
         </Card>
       </Box>
-    </>)
+    ))}
+    </>
+  )
 }
 
 export default ListaPostagem;

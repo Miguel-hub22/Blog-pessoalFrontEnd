@@ -8,6 +8,7 @@ import { buscaId, deleteId } from '../../../services/Service';
 import Tema from '../../../models/Tema';
 import { useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 
     function DeletarTema() {
@@ -19,7 +20,16 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
     
         useEffect(() => {
             if (token == "") {
-                alert("Você precisa estar logado")
+              toast.success("Voce precisa estar logado!",{
+                position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "colored",
+                })
                 navigate("/login")
         
             }
@@ -46,7 +56,16 @@ import { TokenState } from '../../../store/tokens/tokensReducer';
                     'Authorization': token
                   }
                 });
-                alert('Tema deletado com sucesso');
+                toast.success("Tema deletado com sucesso!",{
+                  position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "colored",
+                  })
               }
             
               function nao() { // não tem nenhuma funcionalidade ela fica na mesma tela 
