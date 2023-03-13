@@ -19,7 +19,7 @@ function Navbar(): JSX.Element {
         
         dispatch(addToken(''));
         
-        toast.error("Usuário deslogado",{
+        toast.info("Usuário deslogado",{
             position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
