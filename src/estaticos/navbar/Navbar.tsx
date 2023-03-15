@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, TextField, Toolbar, Typography } from '@material-ui/core';
 import {Box} from '@mui/material';
 import {Link, useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -75,9 +75,11 @@ function Navbar(): JSX.Element {
 
                     <Box mx={1} className='cursor' marginLeft={2} onClick={goLogout}>
                         <Typography variant="h6" color="inherit">
-                            Login
+                            Logout
                         </Typography>
                     </Box>
+
+                  
 
             </Box>
 

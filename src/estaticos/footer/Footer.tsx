@@ -10,6 +10,9 @@ import { TokenState } from '../../store/tokens/tokensReducer';
 
 
         function Footer() {
+          const token = useSelector<TokenState, TokenState["tokens"]>(
+            (state) => state.tokens)
+          
             return (
               <>
                 <Grid
